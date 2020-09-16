@@ -1,0 +1,174 @@
+
+body {
+    background: #f3f3f3;
+}
+
+.btn-default {
+    background: transparent;
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding: 10px 30px;
+    color: #000;
+    font-weight: 500;
+    outline: none !important;
+}
+
+.field {
+    display: block;
+    background: #ececec;
+    border: none;
+    padding: 10px 5px 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.App {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.welcome-screen {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 850px;
+    height: 500px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .login-register {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 65%;
+        transform: translateX(0);
+        transition: transform .8s ease-in-out;
+
+        &.move {
+            transform: translateX(54%);
+        }
+
+        .btn-default {
+            display: block;
+            margin: 20px auto 0;
+        }
+    }
+
+    .signup-tab, .login-tab {
+        opacity: 0;
+        width: 100%;
+        margin: 0 auto;
+        transition: all .2s ease-in;
+
+        &.active {
+            opacity: 1;
+            transition: transform .8s ease-in;
+        }
+    }
+
+    .signup-tab {
+        transform: translateX(-54%);
+
+        &.active {
+            transform: translateX(-50%);
+        }
+    }
+
+    .login-tab {
+        transform: translateX(50%);
+
+        &.active {
+            transform: translateX(54%); 
+        }
+    }
+
+    .sidebar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 40%;
+        height: 100%;
+        text-align: center;
+        background: rgb(34,193,195);
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+        transform: translateX(0);
+        transition: all 1s ease-in-out;
+        overflow: hidden;
+
+        &.move {
+            transform: translateX(150%);
+            opacity: 1;
+            animation: mymove;
+            animation-duration: 1s;
+            
+            .info-register {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+
+            .info-login {
+                transform: translateX(0%);
+                opacity: 1;
+            }
+        }
+
+        .sidebar-content {
+            position: relative;
+            max-width: 272px;
+            margin: 0 auto;
+
+            .btn-default {
+                border: 1px solid #fff;
+                color: #fff;
+            }
+        }
+        
+        .info-register, .info-login {
+            h2 {
+                color: #fff;
+            }
+
+            p {
+                color: #fff;
+            }
+        }
+
+        .info-register {
+            position: absolute;
+            transform: translateX(0);
+            transition: all 0.6s .2s ease-in-out;
+        }
+
+        .info-login {
+            transform: translateX(-120%);
+            opacity: 0;
+            transition: all 0.6s .2s ease-in-out;
+        }
+    }
+}
+
+
+@keyframes mymove {
+    20% 
+        { 
+            width: 40%;
+        }
+    20%, 70%
+        { 
+            width: 50%;
+        }
+    100%
+        { 
+            width: 40%;
+        }
+}
