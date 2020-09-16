@@ -102,23 +102,47 @@ body {
         background: rgb(34,193,195);
         background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
         transform: translateX(0);
-        transition: all 1s ease-in-out;
-        overflow: hidden;
+        transition: all 1.2s ease-in-out;
+        // overflow: hidden;
+
+        .info-register, .info-login {
+            h2 {
+                color: #fff;
+            }
+
+            p {
+                color: #fff;
+            }
+        }
+
+        .info-register {
+            position: absolute;
+            transform: translateX(0);
+            transition: all .6s ease-in-out;
+        }
+
+        .info-login {
+            transform: translateX(120%);
+            opacity: 0;     
+            transition: all .6s ease-in-out; 
+        }
 
         &.move {
             transform: translateX(150%);
             opacity: 1;
-            animation: mymove;
-            animation-duration: 1s;
+            // animation: mymove;
+            // animation-duration: 1s;
             
             .info-register {
-                transform: translateX(120%);
+                transform: translateX(-120%);
                 opacity: 0;
+                transition: all .2s ease-in-out;
             }
 
             .info-login {
                 transform: translateX(0%);
                 opacity: 1;
+                transition: all 0.2s ease-in-out;
             }
         }
 
@@ -133,27 +157,6 @@ body {
             }
         }
         
-        .info-register, .info-login {
-            h2 {
-                color: #fff;
-            }
-
-            p {
-                color: #fff;
-            }
-        }
-
-        .info-register {
-            position: absolute;
-            transform: translateX(0);
-            transition: all 0.6s .2s ease-in-out;
-        }
-
-        .info-login {
-            transform: translateX(-120%);
-            opacity: 0;
-            transition: all 0.6s .2s ease-in-out;
-        }
     }
 }
 
@@ -163,7 +166,7 @@ body {
         { 
             width: 40%;
         }
-    20%, 70%
+    30%, 60%
         { 
             width: 50%;
         }

@@ -38,8 +38,8 @@ class Welcome extends React.Component {
         return (
             <div className="welcome-screen">
                 <div className={'login-register ' + (isLogView ? 'move' : '')}>
-                    <Login className={!isLogView ? 'active' : ''}/>
-                    <Signup className={isLogView ? 'active' : ''}/>
+                    <Login className={isLogView ? 'active' : ''}/>
+                    <Signup className={!isLogView ? 'active' : ''}/>
                 </div>
 
                 <div
@@ -56,7 +56,7 @@ class Welcome extends React.Component {
                             <p>Too keep connected with us please login with your personal info</p>
                         </div>
 
-                        <button className="btn-default" onClick={this.toggle}>{isLogView ? ('Login') : ('Sign Up')}</button>
+                        <button className="btn-default" onClick={this.toggle}>{!isLogView ? ('Login') : ('Sign Up')}</button>
                     </div>
                 </div>
             </div>
