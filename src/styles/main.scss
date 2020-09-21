@@ -3,6 +3,19 @@ body {
     background: #f3f3f3;
 }
 
+.App {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.main-title {
+    font-size: 28px;
+    color: #149fa0;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+}
+
 .btn-default {
     background: transparent;
     border: 1px solid #000;
@@ -13,25 +26,41 @@ body {
     outline: none !important;
 }
 
-.field {
-    display: block;
-    background: #ececec;
-    border: none;
-    padding: 10px 5px 10px 15px;
-    border-radius: 5px;
-    width: 100%;
-    margin-bottom: 10px;
-    outline: none;
+.field-group {
+    position: relative;
+    margin-bottom: 15px;
+
+    label {
+        position: absolute;
+        transform: translateY(-34px);
+        color: #8a8a8a;
+        margin: 0;
+        left: 15px;
+        transition: transform .2s ease-in-out;
+    }
 
     &:last-of-type {
         margin-bottom: 0;
     }
 }
 
-.App {
-    display: flex;
-    align-items: center;
-    height: 100vh;
+.field {
+    display: block;
+    background: #f3f3f3;
+    border: none;
+    padding: 10px 5px 10px 15px;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+
+    &:focus {
+        + label  {
+            font-size: 14px;
+            transform: translateY(-55px);
+            color: #ebbc3a;
+            font-weight: 500;
+        }
+    } 
 }
 
 .welcome-screen {
@@ -46,132 +75,146 @@ body {
     overflow: hidden;
 
     .login-register {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 65%;
-        transform: translateX(0);
-        transition: transform .8s ease-in-out;
+        width: 60%;
+        padding: 0 90px;
+        text-align: center;
 
-        &.move {
-            transform: translateX(54%);
+        .signup-tab, .login-tab {
+            width: 100%;
+            margin: 0 auto;
+        }
+    }
+
+    .sidebar {
+        position: absolute;
+        width: 40%;
+        height: 100%;
+        text-align: center;
+        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+        transform: translateX(0);
+        transition: all 1s .1s ease-in-out;
+        overflow: hidden;
+
+        .btn-default {
+            display: inline-block;
+            position: relative;
+            width: 150px;
+            height: 46px;
+            margin-top: 70px;
+            padding: 10px;
+            border: 1px solid #fff;
+            color: #fff;
+            transition: all .3s cubic-bezier(.8, 0, 0, .5);
+            overflow: hidden;
+
+            span {
+                position: absolute;
+                display: inline-block;
+            }
+        }
+    }
+
+    .signup-tab {
+        transform: translate(-1%, -40%);
+        opacity: 1;
+        transition: transform .8s .2s ease-in, opacity .3s .5s ease-in;
+    }
+
+    .login-tab {
+        transform: translate(100%, 65%);
+        opacity: 1;
+        transition: transform .8s .2s ease-in, opacity .3s .5s ease-in;
+    }
+
+    &.signup-screen {
+        .signup-tab {
+            transform: translate(50%, -40%);
+            opacity: 0;
         }
 
+        .info-signup {
+            transform: translate(0, 169%);
+        }
+
+        .sidebar {
+            transform: translateX(0);
+        }
+
+        .btn-signup {         
+            span {
+                &:first-of-type {
+                    transform: translateX(-350%);
+                    transition: transform .3s ease-out;
+                }
+                &:last-of-type {
+                    transform: translateX(-50%);
+                    transition: transform .7s ease-in;
+                }
+            }
+        }
+    }
+
+    &.login-screen {
+        .login-tab {
+            transform: translate(50%, 65%);
+            opacity: 0;
+        }
+
+        .info-login {
+            transform: translate(0%, 50%);
+        }
+
+        .sidebar {
+            transform: translateX(150%);
+        }
+
+        .btn-login {
+            span {
+                &:first-of-type {
+                    transform: translateX(-50%); 
+                    transition: transform .7s ease-in;
+                }
+
+                &:last-of-type {
+                    transform: translateX(200%);
+                    transition: transform .3s ease-out;
+                }
+            }
+        }
+    }
+
+    .btn-login {
+        span {
+            &:first-of-type {
+                transform: translateX(0%); 
+            }
+
+            &:last-of-type {
+                transform: translateX(0%); 
+            }
+        }
+    }
+
+    .info-login, .info-signup {
+        max-width: 270px;
+        margin: 0 auto;
+        text-align: center;
+        color: #fff;
+        transition: all 1s .1s ease-out;
+    }
+
+    .info-login {
+        transform: translate(150%, 50%);
+    }
+
+    .info-signup {
+        transform: translate(-200%, 169%);
+    }
+
+    .login-register {
         .btn-default {
             display: block;
             margin: 20px auto 0;
         }
     }
-
-    .signup-tab, .login-tab {
-        opacity: 0;
-        width: 100%;
-        margin: 0 auto;
-        transition: all .2s ease-in;
-
-        &.active {
-            opacity: 1;
-            transition: transform .8s ease-in;
-        }
-    }
-
-    .signup-tab {
-        transform: translateX(-54%);
-
-        &.active {
-            transform: translateX(-50%);
-        }
-    }
-
-    .login-tab {
-        transform: translateX(50%);
-
-        &.active {
-            transform: translateX(54%); 
-        }
-    }
-
-    .sidebar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        width: 40%;
-        height: 100%;
-        text-align: center;
-        background: rgb(34,193,195);
-        background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-        transform: translateX(0);
-        transition: all 1.2s ease-in-out;
-        // overflow: hidden;
-
-        .info-register, .info-login {
-            h2 {
-                color: #fff;
-            }
-
-            p {
-                color: #fff;
-            }
-        }
-
-        .info-register {
-            position: absolute;
-            transform: translateX(0);
-            transition: all .6s ease-in-out;
-        }
-
-        .info-login {
-            transform: translateX(120%);
-            opacity: 0;     
-            transition: all .6s ease-in-out; 
-        }
-
-        &.move {
-            transform: translateX(150%);
-            opacity: 1;
-            // animation: mymove;
-            // animation-duration: 1s;
-            
-            .info-register {
-                transform: translateX(-120%);
-                opacity: 0;
-                transition: all .2s ease-in-out;
-            }
-
-            .info-login {
-                transform: translateX(0%);
-                opacity: 1;
-                transition: all 0.2s ease-in-out;
-            }
-        }
-
-        .sidebar-content {
-            position: relative;
-            max-width: 272px;
-            margin: 0 auto;
-
-            .btn-default {
-                border: 1px solid #fff;
-                color: #fff;
-            }
-        }
-        
-    }
-}
-
-
-@keyframes mymove {
-    20% 
-        { 
-            width: 40%;
-        }
-    30%, 60%
-        { 
-            width: 50%;
-        }
-    100%
-        { 
-            width: 40%;
-        }
 }
