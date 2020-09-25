@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../Login';
-import Signup from '../Signup';
+import Login from './Login';
+import Signup from './Signup';
 import Transition from 'react-transition-group/Transition';
 import { Link } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ class Welcome extends React.Component {
                     <Transition in={toggleFlag} timeout={600}>
                         <React.Fragment>
                             <Link
-                                to={toggleFlag ? '/login' : '/sign-up'}
+                                to={toggleFlag ? '/welcome/login' : '/welcome/sign-up'}
                                 className={'btn-default ' + (toggleFlag ? 'btn-login' : 'btn-signup')}
                                 onClick={this.toggle}
                                 style={transitionStyles}
