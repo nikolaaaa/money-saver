@@ -1,20 +1,20 @@
 import React from 'react';
-import { Line, Pie, Doughnut, Bar } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import { Row, Col } from 'reactstrap';
 
-const data = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
-    datasets: [
-        {
-            label: 'Sales for 2020',
-            data: [4, 5, 3, 1, 5]
-        },
-        {
-            label: 'Sales for 2019 (M)',
-            data: [1.5, 2, 3, 4, 5]
-        }
-    ],
-}
+// const data = {
+//     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+//     datasets: [
+//         {
+//             label: 'Sales for 2020',
+//             data: [4, 5, 3, 1, 5]
+//         },
+//         {
+//             label: 'Sales for 2019 (M)',
+//             data: [1.5, 2, 3, 4, 5]
+//         }
+//     ],
+// }
 
 const dataPie = {
     labels: ['Храна', 'Кола', 'Сметки', 'Ипотека', 'Други'],
@@ -35,11 +35,6 @@ const optionsPie = {
 }
 
 class Dashboard extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         return (
