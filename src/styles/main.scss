@@ -26,6 +26,12 @@ body {
     outline: none !important;
 }
 
+.field-error {
+    color: red;
+    font-size: 13px;
+    text-align: left;
+}
+
 .field-group {
     position: relative;
     margin-bottom: 15px;
@@ -53,7 +59,7 @@ body {
     width: 100%;
     outline: none;
 
-    &:focus {
+    &.active {
         + label  {
             font-size: 14px;
             transform: translateY(-55px);

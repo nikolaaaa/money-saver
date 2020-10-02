@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 import axios from 'axios';
 
-class Login extends React.Component {
-    test = () => {
-        const user = {
-            email: 'angelov.nikola@abv.bg',
-            password: '12345678'
-        };
+const Login = () => {
+    const { register, handleSubmit, watch, errors } = useForm();
 
-        axios.post(`http://localhost:3000/api/user/login`, user)
+    const logInHandler = (formData) => {
+        console.log(formData);
+        axios.post(`http://localhost:3000/api/user/login`, formData)
             .then(res => {
                 console.log(res.data, 'User is logged in');
             })
@@ -18,27 +17,28 @@ class Login extends React.Component {
             })
     }
     
-    render() {
-        return (
-            <div className="login-tab">
-                <h2 className="main-title">Log In</h2>
-                
+    return (
+        <div className="login-tab">
+            <h2 className="main-title">Log In</h2>
+            
+            <form onSubmit={handleSubmit(logInHandler)} noValidate>
                 <div className="field-group">
-                    <input type="text" name="email" id="email" className="field" />
+                    <input type="text" name="email" id="email" className="field" ref={register({ required: true })}/>
                     <label htmlFor="email">Email</label>
                 </div>
-    
+
                 <div className="field-group">
-                    <input type="text" name="pass" id="pass" className="field" />
-                    <label htmlFor="pass">Password</label>
+                    <input type="password" name="password" id="password" className="field" ref={register({ required: true })}/>
+                    <label htmlFor="password">Password</label>
                 </div>
-    
+
                 <Link to="" className="forgot-password">Forgot your password?</Link>
                 
-                <button className="btn-default" type="submit" onClick={this.test}>Login</button>
-            </div>
-        )
-    }
+                <button className="btn-default" type="submit" onClick={logInHandler}>Login</button>
+            </form>
+        </div>
+    )
+
 }
 
 export default Login;

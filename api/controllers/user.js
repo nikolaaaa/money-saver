@@ -10,9 +10,9 @@ exports.createUser =  (req, res, next) => {
                 email: req.body.email,
                 password: hash,
             });
+            
             user.save()
                 .then(result => {
-                    console.log(result);
                     res.status(201).json({
                         message: 'User created',
                         result: result
@@ -20,7 +20,7 @@ exports.createUser =  (req, res, next) => {
                 })
                 .catch(error => {
                     res.status(500).json({
-                        message: 'Invalid authentication credentials!'
+                        message: 'USER_ALREADY_CREATED'
                     })
                 });
         })
