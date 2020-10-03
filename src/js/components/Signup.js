@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from "react-hook-form";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { onBlur, onFocus } from './helpers/Form';
 import axios from 'axios';
 
 const SignUp = () => {
     const [serverError, setServerError] = useState();
+    // const [isLoading, setLoading] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
     const password = useRef({});
     password.current = watch("password", "");
