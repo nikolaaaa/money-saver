@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 
 class CommonStore {
-    @observable isLoading = false;
+    @observable isLoading = true;
 
     @action
     showLoader() {
@@ -14,4 +14,4 @@ class CommonStore {
     }
 }
 
-export default CommonStore;
+export default new CommonStore;

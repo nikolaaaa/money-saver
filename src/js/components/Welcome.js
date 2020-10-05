@@ -4,11 +4,10 @@ import Signup from './Signup';
 // import Transition from 'react-transition-group/Transition';
 import Loading from '../Loader';
 import { Link } from 'react-router-dom';
+import { inject } from 'mobx-react';
 
+@inject('commonStore')
 class Welcome extends React.Component {
-    activeTab = 'test 0';
-    isLoading = true;
-
     constructor(props) {
         super(props);
 
@@ -17,6 +16,11 @@ class Welcome extends React.Component {
         }
 
         this.toggle = this.toggle.bind(this);
+
+        // this.props.commonStore.hideLoader();
+    }
+
+    componentDidMount() {
     }
 
     toggle() {
@@ -33,16 +37,15 @@ class Welcome extends React.Component {
             exited: { width: '200px' },
         };
 
-        if(this.isLoading) {
+        if (this.props.commonStore.isLoading) {
             return (<Loading/>)
         }
 
         return (
             <div className={'welcome-screen ' + (toggleFlag ? 'login-screen' : 'signup-screen')}>
-                <Loading/>
                 <div className="login-register">
                     <Login />
-                    <Signup />
+                    <Signup loading={this.props.commonStore.isLoading}/>
                 </div>
 
                 <div className="sidebar">

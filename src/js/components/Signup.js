@@ -4,9 +4,8 @@ import { useHistory } from "react-router-dom";
 import { onBlur, onFocus } from './helpers/Form';
 import axios from 'axios';
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [serverError, setServerError] = useState();
-    // const [isLoading, setLoading] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
     const password = useRef({});
     password.current = watch("password", "");
@@ -26,6 +25,7 @@ const SignUp = () => {
     const signUpHandler = formData => {
         axios.post(`http://localhost:3000/api/user/signup`, formData)
             .then(res => {
+                props.loading = false;
                 history.push("/");
             })
             .catch((err) => {
@@ -33,7 +33,7 @@ const SignUp = () => {
                 console.log(err + ':', err.response.data.message);
             })
     }
-
+        
     return (
         <div className="signup-tab">
             <h2 className="main-title">Sign Up</h2>

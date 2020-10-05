@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../src/styles/main.scss';
-import Stores from './js/stores';
 import { Provider } from 'mobx-react';
 import * as serviceWorker from './serviceWorker';
 
+import commonStore from './js/components/stores/commonStore';
+
+const stores = {
+  commonStore
+}
+
 ReactDOM.render(
-  <Provider Stores={Stores}>
+  <Provider {...stores}>
     <App />
   </Provider>,
   document.getElementById('root')
