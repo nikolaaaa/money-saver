@@ -14,4 +14,4 @@ class CommonStore {
     }
 }
 
-export default new CommonStore;
+export default new CommonStore();

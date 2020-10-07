@@ -1,9 +1,8 @@
 import React from 'react';
 import Login from './Login';
 import Signup from './Signup';
-// import Transition from 'react-transition-group/Transition';
-import Loading from '../Loader';
-import { Link } from 'react-router-dom';
+import Transition from 'react-transition-group/Transition';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import { inject } from 'mobx-react';
 
 @inject('commonStore')
@@ -16,36 +15,29 @@ class Welcome extends React.Component {
         }
 
         this.toggle = this.toggle.bind(this);
-
-        // this.props.commonStore.hideLoader();
-    }
-
-    componentDidMount() {
     }
 
     toggle() {
-        this.setState({ toggleFlag: !this.state.toggleFlag });
+        this.setState({ toggleFlag: !this.state.toggleFlag }); 
     }
     
     render() {
         let { toggleFlag } = this.state;
 
         const transitionStyles = {
-            entering: { width: '200px' },
-            // entered: {  },
-            // exiting: { },
-            exited: { width: '200px' },
+            entering: { opacity: 1 },
+            entered: { opacity: 1 },
+            exiting: { opacity: 0 },
+            exited: { opacity: 1 },
         };
-
-        if (this.props.commonStore.isLoading) {
-            return (<Loading/>)
-        }
 
         return (
             <div className={'welcome-screen ' + (toggleFlag ? 'login-screen' : 'signup-screen')}>
+            {/* <div className={'welcome-screen'}> */}
                 <div className="login-register">
                     <Login />
-                    <Signup loading={this.props.commonStore.isLoading}/>
+
+                    <Signup />
                 </div>
 
                 <div className="sidebar">
